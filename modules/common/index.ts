@@ -1,5 +1,4 @@
 import { defineNuxtModule, createResolver, addComponentsDir } from '@nuxt/kit';
-import type { NuxtTemplate } from '@nuxt/schema';
 import { fileURLToPath } from 'url';
 
 export interface ModuleOptions {
@@ -13,19 +12,19 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {},
   setup(_options, _nuxt) {
-    const resolver = createResolver(import.meta.url);
-
-    _nuxt.options.alias['@common'] = fileURLToPath(
-      new URL('.', import.meta.url)
-    );
+    const { resolve } = createResolver(import.meta.url);
+    
+        _nuxt.options.alias['@common'] = fileURLToPath(
+          new URL('.', import.meta.url)
+        );
 
     addComponentsDir({
-      path: resolver.resolve('components'),
+      path: resolve('components'),
       prefix: 'Common',
     });
 
     addComponentsDir({
-      path: resolver.resolve('pages'),
+      path: resolve('pages'),
       prefix: 'CommonPages',
     });
   },

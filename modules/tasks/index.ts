@@ -7,25 +7,25 @@ export interface ModuleOptions {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: 'Boards',
-    configKey: 'boards',
+    name: 'Tasks',
+    configKey: 'tasks',
   },
   defaults: {},
   setup(_options, _nuxt) {
     const { resolve } = createResolver(import.meta.url);
 
-    _nuxt.options.alias['@boards'] = fileURLToPath(
+    _nuxt.options.alias['@tasks'] = fileURLToPath(
       new URL('.', import.meta.url)
     );
-  
+
     addComponentsDir({
       path: resolve('components'),
-      prefix: 'Boards',
+      prefix: 'Tasks',
     });
 
     addComponentsDir({
       path: resolve('pages'),
-      prefix: 'BoardsPages',
+      prefix: 'TasksPages',
     });
   },
 });
