@@ -4,5 +4,5 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   modules: ['@nuxt/ui', '@nuxtjs/i18n'],
-  css: ['~/assets/css/main.css']
-})
+  css: ['~/assets/css/main.css'],
+});
